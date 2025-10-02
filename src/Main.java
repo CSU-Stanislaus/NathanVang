@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+//test
  class StringManipulationChallenge {
 
     public static void main(String[] args) {
@@ -13,7 +13,7 @@ import java.util.Scanner;
         System.out.println("=== String Manipulation Challenge ===");
 
         // 1) Upper / Lower / Trim
-        System.out.print("Hello how are you?");
+        System.out.print("Enter a sentence:");
         String input = sc.nextLine();
 
         String upper = stringToUpper(input);
@@ -22,7 +22,7 @@ import java.util.Scanner;
         String lower = stringToLower(input);
         System.out.println("lower: " + lower);
 
-        System.out.print(" '   Hello how are you?   '): ");
+        System.out.print(" ' Enter a sentence with leading/trailing spaces:  '): ");
         String spaced = sc.nextLine();
         String trimmed = stringTrim(spaced);
         System.out.println("trim : '" + trimmed + "'");
@@ -74,42 +74,17 @@ import java.util.Scanner;
         }
     }
 
-    /**
-     * This method has one string parameter and will:
-     * 1) change the string to all upper case and
-     * 2) return the new string.
-     * @param myString
-     * @return upper-cased string (null if input is null)
-     */
-    public static String stringToUpper(String myString) { // the method itself has 'parameters'
-        // TODO: Implement this method
-        return null;
+    public static String stringToUpper(String myString) {
+        return myString.toUpperCase();
     }
 
-    /**
-     * This method has one string parameter and will:
-     * 1) change the string to all lower case,
-     * 2) return the new string into the 'lowerCaseString' variable
-     * @param usersString
-     * @return lower-cased string (null if input is null)
-     */
     public static String stringToLower(String usersString) {
-        // TODO: Implement this method
+
         return usersString.toLowerCase();
     }
 
-    /**
-     * This method has one string parameter and will:
-     * 1) trim the whitespace from before and after the string, and
-     * 2) return the new string.
-     * HINT: When getting input from the user (you are the user), try inputting
-     * "   a string with whitespace   " to see how the whitespace is trimmed.
-     * @param usersStringWithWhiteSpace
-     * @return trimmed string (null if input is null)
-     */
     public static String stringTrim(String usersStringWithWhiteSpace) {
-        // TODO: Implement this method
-        return null;
+        return usersStringWithWhiteSpace.trim();
     }
 
     /**
