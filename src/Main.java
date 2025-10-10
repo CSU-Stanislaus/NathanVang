@@ -1,19 +1,15 @@
+
 import java.util.Scanner;
-//test
- class StringManipulationChallenge {
+
+class StringManipulationChallenge {
 
     public static void main(String[] args) {
-        /*
-         * This main method is ready for you to test your implementations.
-         * Fill in the TODOs in the methods below, then run this program and
-         * try different inputs to verify behavior.
-         */
         Scanner sc = new Scanner(System.in);
 
         System.out.println("=== String Manipulation Challenge ===");
 
         // 1) Upper / Lower / Trim
-        System.out.print("Enter a sentence:");
+        System.out.print("Enter a sentence: ");
         String input = sc.nextLine();
 
         String upper = stringToUpper(input);
@@ -22,7 +18,7 @@ import java.util.Scanner;
         String lower = stringToLower(input);
         System.out.println("lower: " + lower);
 
-        System.out.print(" ' Enter a sentence with leading/trailing spaces:  '): ");
+        System.out.print("Enter a sentence with leading/trailing spaces: ");
         String spaced = sc.nextLine();
         String trimmed = stringTrim(spaced);
         System.out.println("trim : '" + trimmed + "'");
@@ -45,7 +41,7 @@ import java.util.Scanner;
         // 3) Search char
         System.out.print("Enter a string to search in: ");
         String searchIn = sc.nextLine();
-        System.out.print("H ");
+        System.out.print("Enter the character to search for: ");
         String charStr = sc.nextLine();
         char target = (charStr.isEmpty() ? '\0' : charStr.charAt(0));
         int idx = searchChar(searchIn, target);
@@ -59,7 +55,7 @@ import java.util.Scanner;
         String fullName = concatNames(fName, lName);
         System.out.println("Full name: " + fullName);
 
-        System.out.println("=== Done. Now implement the TODOs in the methods! ===");
+        System.out.println("=== Done. ===");
         sc.close();
     }
 
@@ -79,7 +75,6 @@ import java.util.Scanner;
     }
 
     public static String stringToLower(String usersString) {
-
         return usersString.toLowerCase();
     }
 
@@ -87,50 +82,32 @@ import java.util.Scanner;
         return usersStringWithWhiteSpace.trim();
     }
 
-    /**
-     * This method has three parameters, one string and two integers. It will:
-     * 1) get the substring based on the first integer element and the length
-     *    of the substring desired.
-     * 2) return the substring.
-     * @param x
-     * @param firstElement
-     * @param lengthOfSubstring
-     * @return the substring
-     * @throws IllegalArgumentException if arguments are invalid
-     */
     public static String stringSubstring(String x, int firstElement, int lengthOfSubstring) {
-        // TODO: Implement this method
-        // Suggested: validate null input, non-negative indices, and bounds
-        return null;
+        if (x == null) {
+            throw new IllegalArgumentException("Input string cannot be null.");
+        }
+        if (firstElement < 0 || lengthOfSubstring < 0) {
+            throw new IllegalArgumentException("Indices must be non-negative.");
+        }
+        if (firstElement + lengthOfSubstring > x.length()) {
+            throw new IllegalArgumentException("Substring range is out of bounds.");
+        }
+        return x.substring(firstElement, firstElement + lengthOfSubstring);
     }
 
-    /**
-     * This method has two parameters, one string and one char. It will:
-     * 1) search the string parameter for first occurrence of the char parameter and
-     * 2) return the index of the char.
-     * HINT: Think about how stringTrim() (above) would be useful in this situation
-     * when getting the char from the user.
-     * @param userInputString
-     * @param charUserWants
-     * @return index of the char (or -1 if not found or input is null)
-     */
     public static int searchChar(String userInputString, char charUserWants) {
-        // TODO: Implement this method
-        return -1;
+        if (userInputString == null) {
+            return -1;
+        }
+
+        userInputString = stringTrim(userInputString);  // remove leading/trailing spaces
+        return userInputString.indexOf(charUserWants);  // return index or -1
     }
 
-    /**
-     * This method has two string parameters. It will:
-     * 1) concatenate the two strings with a space between them.
-     * 2) return the new string.
-     * HINT: You will need to get the users first and last name in the
-     * main method and send them as arguments.
-     * @param fName
-     * @param lName
-     * @return concatenated "first last"
-     */
     public static String concatNames(String fName, String lName) {
-        // TODO: Implement this method
-        return null;
+        if (fName == null || lName == null) {
+            throw new IllegalArgumentException("First name and last name cannot be null.");
+        }
+        return fName + " " + lName;
     }
 }
